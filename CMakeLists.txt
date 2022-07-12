@@ -67,7 +67,7 @@ endif()
 if (CLI_UseBoostAsio)
     set(Boost_NO_BOOST_CMAKE ON)
     add_definitions( -DBOOST_ALL_NO_LIB ) # for windows
-    find_package(Boost 1.55 REQUIRED COMPONENTS system)
+    find_package(Boost 1.7 REQUIRED COMPONENTS system)
 endif()
 
 if (CLI_UseStandaloneAsio)
@@ -91,7 +91,7 @@ target_include_directories(cli
 target_link_libraries(cli INTERFACE Threads::Threads)
 if (CLI_UseBoostAsio)
     target_link_libraries(cli INTERFACE Boost::system)
-    target_compile_definitions(cli INTERFACE BOOST_ASIO_NO_DEPRECATED=1)
+    target_compile_definitions(cli INTERFACE)
 endif()
 if (CLI_UseStandaloneAsio)
 	add_library(standalone_asio INTERFACE IMPORTED)
